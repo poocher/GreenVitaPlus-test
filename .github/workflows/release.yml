@@ -31,7 +31,7 @@ jobs:
         shell: bash
         run: |
           version="$(awk '
-            $0 == "[package]" { in_package = 1; next }
+             /^\[package\]/ { in_package = 1; next }
             /^\[/ { in_package = 0 }
             in_package && /^version = / {
               gsub(/^version = "|"$/, "")
